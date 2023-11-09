@@ -1,0 +1,201 @@
+﻿@page "/tarikUang/{IdATM:int}/{noRekening:int}"
+@using ATMBank_.Models;
+@using ATMBank_.Context;
+@using ATMBank_.Data;
+@inject CasetteService casetteService
+@inject NasabahService nasabahService
+@inject ATMService atmService
+
+<PageTitle>ATM Bank</PageTitle>
+
+<h1>Tarik Uang</h1>
+
+<div class="mt-3">
+    <p>Akun : <em><b>@nasabah.NamaNasabah</b></em></p>
+    <p>No Rekening : <em><b>@nasabah.NoRekening</b></em></p>
+    <p>Saldo : <em><b>Rp @nasabah.Saldo.ToString("#,##0")</b></em></p>
+    <p>Cabang ATM : <em><b>@atm.NamaATM</b></em></p>
+</div>
+
+<div class="row mb-3">
+    <EditForm Model="@info" OnValidSubmit="handleSubmit">
+        <div class="mb-3">
+            <label for="nominal" class="col-md-6 col-form-label">Masukkan Nominal (Rp)</label>
+            <InputNumber id="nominal" @bind-Value="info!.JumlahPenarikan" class="form-control" placeholder="Rp. ">
+            </InputNumber>
+        </div>
+        <button type="submit" class="btn btn-primary">Tarik Uang</button>
+    </EditForm>
+</div>
+
+<p>Jumlah yang ditarik: <b>Rp @NominalPenarikan.ToString("#,##0")</b></p>
+
+@if (penarikanSukses == false)
+{
+    <p class="text text-danger">@warning</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nominal</th>
+            <th>Jumlah (lembar)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var riwayat in riwayatPenarikan)
+        {
+            if(riwayat.JumlahLembar != 0)
+            {
+                <tr>
+                    <td>Rp @riwayat.Nominal.ToString("#,##0")</td>
+                    <td>@riwayat.JumlahLembar</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public int IdATM { get; set; }
+
+    [Parameter]
+    public int noRekening { get; set; }
+
+    List<Casette> daftarPecahan = new List<Casette>();
+
+    private TempInfo info = new TempInfo();
+
+    private Nasabah nasabah = new Nasabah();
+
+    private ATM atm = new ATM();
+
+    List<TempInfo> riwayatPenarikan = new List<TempInfo>();
+
+    int NominalPenarikan = 0;
+
+    string? warning;
+
+    protected override async Task OnInitializedAsync()
+    {
+        daftarPecahan = await Task.Run(() => casetteService.GetCasettesByATMId(IdATM));
+        nasabah = await Task.Run(() => nasabahService.GetNasabahByNoRek(noRekening));
+        atm = await Task.Run(() => atmService.GetATMById(IdATM));
+    }
+
+    bool penarikanSukses;
+
+    protected override void OnParametersSet()
+    {
+        info = new()
+            {
+                JumlahPenarikan = 0,
+            };
+
+        penarikanSukses = true;
+    }
+
+    public int id, count, availableCount;
+
+    private async void handleSubmit()
+    {
+        ResetDaftarRiwayat();
+
+        NominalPenarikan = info.JumlahPenarikan;
+
+        penarikanSukses = true;
+
+        var initialCasette = new List<Casette>(daftarPecahan);
+
+        if (NominalPenarikan > 2500000)
+        {
+            penarikanSukses = false;
+            warning = "Maksimal Nominal Tarik Tunai adalah Rp 2.500.000";
+        }
+        else if (nasabah.Saldo < info.JumlahPenarikan)
+        {
+            penarikanSukses = false;
+            warning = "Jumlah saldo anda tidak cukup";
+        }
+        else
+        {
+            foreach (var casette in daftarPecahan)
+            {
+                if (info.JumlahPenarikan >= casette.Nominal && casette.Jumlah > 0)
+                {
+                    penarikanSukses = true;
+
+                    this.id = casette.Id;
+                    this.count = info.JumlahPenarikan / casette.Nominal;
+                    this.availableCount = Math.Min(count, casette.Jumlah);
+
+                    if (casette.Jumlah <= 0 || availableCount <= 0)
+                    {
+                        continue;
+                    }
+
+                    casette.Jumlah -= availableCount;
+                    info.JumlahPenarikan -= availableCount * casette.Nominal;
+
+                    var riwayat = new TempInfo
+                        {
+                            Nominal = casette.Nominal,
+                            JumlahLembar = availableCount
+                        };
+
+                    riwayatPenarikan.Add(riwayat);
+                }
+            }
+
+            if (info.JumlahPenarikan != 0)
+            {
+                penarikanSukses = false;
+                warning = "ATM tidak memiliki cukup uang untuk nominal tersebut";
+
+                foreach (var riwayat in riwayatPenarikan)
+                {
+                    var casette = initialCasette.FirstOrDefault(c => c.Nominal == riwayat.Nominal);
+                    if (casette != null)
+                    {
+                        casette.Jumlah += riwayat.JumlahLembar;
+                    }
+                }
+
+                ResetDaftarPecahan();
+                ResetDaftarRiwayat();
+
+            }
+            else if (penarikanSukses)
+            {
+                nasabah.Saldo -= NominalPenarikan;
+                await UpdateDb();
+                ResetDaftarPecahan();
+            }
+        }
+    }
+
+    private void ResetDaftarPecahan()
+    {    
+        info.JumlahPenarikan = 0;
+    }
+
+    private void ResetDaftarRiwayat()
+    {
+        riwayatPenarikan.Clear();
+    }
+
+    private async Task UpdateDb()
+    {
+        foreach (var riwayat in riwayatPenarikan)
+        {
+            var casette = daftarPecahan.FirstOrDefault(c => c.Nominal == riwayat.Nominal);
+            if (casette != null)
+            {
+                await casetteService.UpdateCasette(casette);
+            }
+        }
+
+        await nasabahService.UpdateNasabah(this.nasabah);
+    }
+}

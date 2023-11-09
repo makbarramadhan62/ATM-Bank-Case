@@ -1,0 +1,92 @@
+﻿@page "/cekSaldo"
+@using ATMBank_.Models;
+@using ATMBank_.Context;
+@using ATMBank_.Data;
+@inject NasabahService nasabahService
+
+<PageTitle>Cek Saldo</PageTitle>
+
+<h1>Cek Saldo</h1>
+
+<div class="row mb-3 mt-3">
+    <EditForm Model="@tempInfo" OnValidSubmit="handleSubmit">
+        <div class="mb-3">
+            <label for="nominal" class="col-md-6 col-form-label">Masukkan No Rekening</label>
+            <InputNumber id="nominal" @bind-Value="tempInfo!.NoRekening" class="form-control">
+            </InputNumber>
+        </div>
+        <button type="submit" class="btn btn-primary">Cek Saldo</button>
+    </EditForm>
+</div>
+
+@if (nasabah == null)
+{
+    <p><em>Nasabah not Found</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nama Nasabah</th>
+                <th>No Rekening</th>
+                <th>Saldo</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(nasabah.NoRekening != 0)
+            {
+            <tr>
+                <td>@nasabah.Id</td>
+                <td>@nasabah.NamaNasabah</td>
+                <td>@nasabah.NoRekening</td>
+                <td>Rp @nasabah.Saldo.ToString("#,##0")</td>
+                <td>
+                    <a href="setorTunai/@nasabah.Id">
+                        <span type="button" class="btn btn-primary mb-3">Setor Tunai</span>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private TempInfo tempInfo = new TempInfo();
+
+    private Nasabah? nasabah = new Nasabah();
+
+    private async void handleSubmit()
+    {
+        int noRekening = tempInfo.NoRekening;
+
+        if (noRekening > 0)
+        {
+            Nasabah FoundNasabah = await nasabahService.GetNasabahByNoRek(noRekening);
+            
+            if (FoundNasabah != null)
+            {
+                nasabah = new()
+                    {
+                        Id = FoundNasabah.Id,
+                        NamaNasabah = FoundNasabah.NamaNasabah,
+                        NoRekening = FoundNasabah.NoRekening,
+                        Saldo = FoundNasabah.Saldo
+                    };
+                ResetNoRekening();
+            }
+            else
+            {
+                nasabah = null;
+            }
+        }
+    }
+
+    private void ResetNoRekening()
+    {      
+        tempInfo.NoRekening = 0;
+    }
+}

@@ -1,0 +1,40 @@
+﻿@page "/addAtm"
+@using ATMBank_.Data;
+@using ATMBank_.Models;
+@inject ATMService atmService
+@inject NavigationManager NavigationManager
+
+<h3>Tambahkan ATM</h3>
+
+<div class="row">
+    <div class="col-s4">
+        <EditForm Model="@atm">
+            <div class="mb-3">
+                <label for="nama" class="form-label">Masukkan Nama ATM</label>
+                <InputText id="nama" @bind-Value="@atm.NamaATM" class="form-control">
+                </InputText>
+            </div>
+            <button type="submit" class="btn btn-primary" @onclick="AddNewATM">Simpan</button>
+            <button type="button" class="btn btn-danger" @onclick="Cancel">Batal</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private ATM atm = new ATM();
+
+    protected override void OnInitialized()
+    {
+    }
+
+    protected async void AddNewATM()
+    {
+        await atmService.AddNewATM(atm);
+        NavigationManager.NavigateTo("atmList");
+    }
+
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("atmList");
+    }
+}

@@ -1,0 +1,72 @@
+﻿@page "/nasabahList"
+@using ATMBank_.Data
+@using ATMBank_.Models;
+@inject IJSRuntime JSRuntime
+@inject NasabahService nasabahService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Monitoring ATM Bank</PageTitle>
+
+<h1>Monitoring Saldo Nasabah</h1>
+
+<p>Berikut adalah Nilai Saldo pada masing masing nasabah</p>
+
+
+
+@if (nasabah is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <NavLink href="addNasabah">
+        <button type="submit" class="btn btn-primary mb-3">Tambahkan Nasabah</button>
+    </NavLink>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Nasabah</th>
+                <th>No Rekening</th>
+                <th>Saldo</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var nas in nasabah)
+            {
+                <tr>
+                    <td>@(nasabah.IndexOf(nas) + 1)</td>
+                    <td>@nas.NamaNasabah</td>
+                    <td>@nas.NoRekening</td>
+                    <td>Rp. @nas.Saldo.ToString("#,##0")</td>
+                    <td>
+                        <button @onclick="()=>DeleteNasabah(nas)" type="button" class="btn btn-danger mb-3"><i class="oi oi-trash"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<Nasabah>? nasabah;
+
+    protected override async Task OnInitializedAsync()
+    {
+        nasabah = await Task.Run(() => nasabahService.GetAllNasabah());
+    }
+
+    private async Task DeleteNasabah(Nasabah nasabah)
+    {
+        var confirmationMessage = $"Apakah Anda yakin ingin menghapus Nasabah {nasabah.NamaNasabah}?";
+
+        if (await JSRuntime.InvokeAsync<bool>("confirm", confirmationMessage))
+        {
+            await nasabahService.DeleteNasabah(nasabah);
+        }        
+         this.nasabah = await Task.Run(() => nasabahService.GetAllNasabah());
+    }
+
+}

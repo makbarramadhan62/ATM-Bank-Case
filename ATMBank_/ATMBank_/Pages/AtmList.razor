@@ -1,0 +1,55 @@
+﻿@page "/atmList"
+@using ATMBank_.Data
+@using ATMBank_.Models;
+@inject ATMService atmService
+@inject NavigationManager NavigationManager
+
+<PageTitle>List ATM Bank Arthaloka</PageTitle>
+
+<h1>List ATM Bank Arthaloka</h1>
+
+@if (ATMList is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <NavLink href="addAtm">
+        <button type="submit" class="btn btn-primary mt-3 mb-3">Tambahkan ATM</button>
+    </NavLink>
+
+    <div class="col-lg">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama ATM</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var atm in ATMList)
+                {
+                    <tr>
+                        <td>@(ATMList.IndexOf(atm) + 1)</td>
+                        <td>@atm.NamaATM</td>
+                        <td>
+                            <a href="detailMonitoring/@atm.Id">
+                                <span type="button" class="btn btn-primary mb-3">Detail</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    List<ATM>? ATMList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ATMList = await Task.Run(() => atmService.GetAllATM());
+    }
+}

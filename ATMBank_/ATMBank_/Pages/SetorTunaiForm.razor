@@ -1,0 +1,85 @@
+﻿@page "/setorTunai/{Id:int}"
+@using ATMBank_.Data
+@using ATMBank_.Models;
+@inject NasabahService nasabahService
+@inject NavigationManager NavigationManager
+
+<h3>Setor Tunai</h3>
+
+<div class="row mt-3">
+    <div class="col-s4">
+        <EditForm Model="nasabah" OnInvalidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="mb-3">
+                <label for="nominal" class="form-label">Nama Nasabah: </label>
+                <InputText id="nominal" @bind-Value="@nasabah.NamaNasabah" class="form-control" disabled>
+                </InputText>
+            </div>
+            <div class="mb-3">
+                <label for="nominal" class="form-label">No Rekening:</label>
+                <InputNumber id="nominal" @bind-Value="@nasabah.NoRekening" class="form-control" disabled>
+                </InputNumber>
+            </div>
+            <div class="mb-3">
+                <label for="jumlah" class="form-label">Jumlah Setor:</label>
+                <InputNumber id="jumlah" @bind-Value="inputUpdate" class="form-control">
+                </InputNumber>
+            </div>
+            @if ((inputUpdate < 50000) || (inputUpdate < 0))
+            {
+                <p><em class="text-danger">@warning</em></p>
+            }
+            <button type="submit" class="btn btn-primary" @onclick="HandleSubmit">Save</button>
+            <button type="button" class="btn btn-danger" @onclick="Cancel">Cancel</button>
+        </EditForm>
+    </div>
+</div>
+
+
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    Nasabah nasabah = new Nasabah();
+
+    public int inputUpdate = 0;
+
+    public string warning = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        nasabah = await Task.Run(() => nasabahService.GetNasabahById(this.Id));
+    }
+
+    protected async void HandleSubmit()
+    {
+        if(inputUpdate >= 50000)
+        {
+            if (this.inputUpdate < 0)
+            {
+                this.warning = "Casette Can't be Negative";
+                this.inputUpdate = 0;
+            }
+            else
+            {
+                nasabah.Saldo += this.inputUpdate;
+                await nasabahService.UpdateNasabah(this.nasabah);
+                this.inputUpdate = 0;
+                NavigationManager.NavigateTo("cekSaldo");
+            }
+        }
+        else
+        {
+            this.warning = "Minimal Setor = Rp 50,000";
+        }
+    }
+
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("cekSaldo");
+    }
+
+}

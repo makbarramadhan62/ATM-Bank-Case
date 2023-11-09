@@ -1,0 +1,78 @@
+﻿@page "/updateCasette/{Id}"
+@using ATMBank_.Data
+@using ATMBank_.Models;
+@inject CasetteService casetteService
+@inject NavigationManager NavigationManager
+
+<h3>Update Casette</h3>
+
+<div class="row">
+    <div class="col-s4">
+        <EditForm Model="obj" OnInvalidSubmit="updateCasette">
+            <DataAnnotationsValidator />
+            <ValidationSummary/>
+            <div class="mb-3">
+                <label for="nominal" class="form-label">Nominal:</label>
+                <InputNumber id="nominal" @bind-Value="@obj.Nominal" class="form-control" disabled>
+                </InputNumber>
+            </div>
+            <div class="mb-3">
+                <label for="jumlah" class="form-label">Jumlah:</label>
+                <InputNumber id="jumlah" @bind-Value="inputUpdate" class="form-control">
+                </InputNumber>
+            </div>
+            @if ((obj.Jumlah + inputUpdate >= 1000) || (inputUpdate < 0))
+            {
+                <p><em class="text-danger">@warning</em></p>
+            }
+            <button type="submit" class="btn btn-primary" @onclick="updateCasette">Save</button>
+            <button type="button" class="btn btn-danger" @onclick="Cancel">Cancel</button>
+        </EditForm>
+    </div>
+</div>
+
+
+
+@code {
+
+    [Parameter]
+    public string? Id { get; set; }
+
+    Casette obj = new Casette();
+
+    public int inputUpdate = 0;
+
+    public string warning = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        obj = await Task.Run(() => casetteService.GetCasetteById(Convert.ToInt32(this.Id)));
+    }
+
+    protected async void updateCasette()
+    {
+        if (obj.Jumlah + this.inputUpdate >= 1000)
+        {
+            this.warning = "Casette Overload!";
+            this.inputUpdate = 0;
+        }
+        else if (this.inputUpdate < 0)
+        {
+            this.warning = "Casette Can't be Negative";
+            this.inputUpdate = 0;
+        }
+        else
+        {
+            obj.Jumlah += this.inputUpdate;
+            await casetteService.UpdateCasette(this.obj);
+            this.inputUpdate = 0;
+            NavigationManager.NavigateTo($"detailMonitoring/{obj.ATMId}");
+        }
+}
+
+    void Cancel()
+    {
+        NavigationManager.NavigateTo($"detailMonitoring/{obj.ATMId}");
+    }
+
+}

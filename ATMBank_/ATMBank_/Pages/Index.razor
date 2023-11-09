@@ -1,0 +1,35 @@
+﻿@page "/"
+@using ATMBank_.Models;
+@using ATMBank_.Context;
+@using ATMBank_.Data;
+@inject CasetteService casetteService
+
+<PageTitle>ATM Bank</PageTitle>
+
+<h1 class="mt-3 fst-italic">Pilih Menu Nasabah</h1>
+<div class="row mt-5">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Tarik Tunai</h5>
+                <p class="card-text">Lakukan penarikan tunai pada ATM pilihan anda</p>
+                <a href="chooseATM" class="btn btn-primary">Pilih</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Cek Saldo</h5>
+                <p class="card-text">Lakukan pengecekan saldo pada rekening anda</p>
+                <a href="cekSaldo" class="btn btn-primary">Pilih</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    
+
+}

@@ -1,0 +1,109 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ATMBank_
+build_property.RootNamespace = ATMBank_
+build_property.ProjectDir = D:\Pekerjaan\OJT\ATMBank_\ATMBank_\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Pekerjaan\OJT\ATMBank_\ATMBank_
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/Admin.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AtmAdd.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXRtQWRkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AtmDetailMonitoring.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXRtRGV0YWlsTW9uaXRvcmluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AtmList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXRtTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/CasetteAdd.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzZXR0ZUFkZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/CasetteMonitoring.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzZXR0ZU1vbml0b3JpbmcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/CasetteUpdate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzZXR0ZVVwZGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/CekSaldo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VrU2FsZG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/ChooseATM.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hvb3NlQVRNLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/InputRekening.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRSZWtlbmluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/NasabahForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFzYWJhaEZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/NasabahList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFzYWJhaExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/SetorTunaiForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0b3JUdW5haUZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/TarikUang.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFyaWtVYW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-9w82h4iiby
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ere0rkr7ur
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
