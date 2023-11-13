@@ -21,7 +21,7 @@ namespace ATMBank_.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ATM", b =>
+            modelBuilder.Entity("ATMBank_.Models.ATM", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,6 +35,36 @@ namespace ATMBank_.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ATMs");
+                });
+
+            modelBuilder.Entity("ATMBank_.Models.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NamaAdmin")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PasswordAdmin")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsernameAdmin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Admins");
                 });
 
             modelBuilder.Entity("ATMBank_.Models.Casette", b =>
@@ -70,33 +100,95 @@ namespace ATMBank_.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("NamaNasabah")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("NoKartuAtm")
+                        .HasColumnType("int");
+
                     b.Property<int>("NoRekening")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PinAtm")
                         .HasColumnType("int");
 
                     b.Property<int>("Saldo")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Nasabahs");
                 });
 
+            modelBuilder.Entity("ATMBank_.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ATMBank_.Models.Admin", b =>
+                {
+                    b.HasOne("ATMBank_.Models.User", "User")
+                        .WithOne("Admin")
+                        .HasForeignKey("ATMBank_.Models.Admin", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("ATMBank_.Models.Casette", b =>
                 {
-                    b.HasOne("ATM", null)
+                    b.HasOne("ATMBank_.Models.ATM", null)
                         .WithMany("Casettes")
                         .HasForeignKey("ATMId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ATM", b =>
+            modelBuilder.Entity("ATMBank_.Models.Nasabah", b =>
+                {
+                    b.HasOne("ATMBank_.Models.User", "User")
+                        .WithOne("Nasabah")
+                        .HasForeignKey("ATMBank_.Models.Nasabah", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ATMBank_.Models.ATM", b =>
                 {
                     b.Navigation("Casettes");
+                });
+
+            modelBuilder.Entity("ATMBank_.Models.User", b =>
+                {
+                    b.Navigation("Admin");
+
+                    b.Navigation("Nasabah");
                 });
 #pragma warning restore 612, 618
         }

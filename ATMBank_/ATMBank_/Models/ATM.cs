@@ -1,4 +1,4 @@
-﻿using ATMBank_.Models;
+﻿namespace ATMBank_.Models;
 
 public class ATM
 {

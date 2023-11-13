@@ -20,64 +20,56 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/Admin.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW4ucmF6b3I=
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AdminAddATM.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5BZGRBVE0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AtmAdd.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXRtQWRkLnJhem9y
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AdminCasetteUpdate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5DYXNldHRlVXBkYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AtmDetailMonitoring.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXRtRGV0YWlsTW9uaXRvcmluZy5yYXpvcg==
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AdminChooseATM.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5DaG9vc2VBVE0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AtmList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXRtTGlzdC5yYXpvcg==
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AdminDetailATM.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5EZXRhaWxBVE0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/CasetteAdd.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzZXR0ZUFkZC5yYXpvcg==
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/AdminUpdate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5VcGRhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/CasetteMonitoring.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzZXR0ZU1vbml0b3JpbmcucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/CasetteUpdate.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzZXR0ZVVwZGF0ZS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/CekSaldo.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VrU2FsZG8ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/ChooseATM.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hvb3NlQVRNLnJhem9y
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/Footer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9vdGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/InputRekening.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRSZWtlbmluZy5yYXpvcg==
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/NasabahChooseATM.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFzYWJhaENob29zZUFUTS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/NasabahForm.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFzYWJhaEZvcm0ucmF6b3I=
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/NasabahHome.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFzYWJhaEhvbWUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/NasabahList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFzYWJhaExpc3QucmF6b3I=
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/NasabahSetorTunai.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFzYWJhaFNldG9yVHVuYWkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/SetorTunaiForm.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0b3JUdW5haUZvcm0ucmF6b3I=
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/NasabahTarikTunai.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFzYWJhaFRhcmlrVHVuYWkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/TarikUang.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFyaWtVYW5nLnJhem9y
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/NasabahUpdate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmFzYWJhaFVwZGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Pages/Navbar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmF2YmFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Pekerjaan/OJT/ATMBank_/ATMBank_/Shared/SurveyPrompt.razor]

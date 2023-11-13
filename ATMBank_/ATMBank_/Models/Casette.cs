@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+namespace ATMBank_.Models;
 
-namespace ATMBank_.Models
-{
     public class Casette
     {
         public int Id { get; set; }
@@ -13,4 +12,3 @@ namespace ATMBank_.Models
         [Range(1, 1000)]
         public int Jumlah { get; set; }
     }
-}

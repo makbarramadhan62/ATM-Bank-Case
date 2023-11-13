@@ -9,9 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<CasetteService>();
-builder.Services.AddScoped<NasabahService>();
 builder.Services.AddScoped<ATMService>();
+builder.Services.AddScoped<CasetteService>();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<NasabahService>();
+builder.Services.AddScoped<AdminService>();
 
 //Connection to Database
 builder.Services.AddDbContext<ApplicationDbContext>(item=>item.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnection")));

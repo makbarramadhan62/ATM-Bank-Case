@@ -57,6 +57,34 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Pekerjaan\\OJT\\ATMBank_\\ATMBank_\\wwwroot\\images\\background.png",
+      "PackagePath": "staticwebassets\\images\\background.png"
+    },
+    {
+      "Id": "D:\\Pekerjaan\\OJT\\ATMBank_\\ATMBank_\\wwwroot\\images\\side-image.png",
+      "PackagePath": "staticwebassets\\images\\side-image.png"
+    },
+    {
+      "Id": "D:\\Pekerjaan\\OJT\\ATMBank_\\ATMBank_\\wwwroot\\images\\side-setor-tunai.png",
+      "PackagePath": "staticwebassets\\images\\side-setor-tunai.png"
+    },
+    {
+      "Id": "D:\\Pekerjaan\\OJT\\ATMBank_\\ATMBank_\\wwwroot\\images\\side-tambah-atm.png",
+      "PackagePath": "staticwebassets\\images\\side-tambah-atm.png"
+    },
+    {
+      "Id": "D:\\Pekerjaan\\OJT\\ATMBank_\\ATMBank_\\wwwroot\\images\\side-tarik-tunai.png",
+      "PackagePath": "staticwebassets\\images\\side-tarik-tunai.png"
+    },
+    {
+      "Id": "D:\\Pekerjaan\\OJT\\ATMBank_\\ATMBank_\\wwwroot\\images\\side-update-casette.png",
+      "PackagePath": "staticwebassets\\images\\side-update-casette.png"
+    },
+    {
+      "Id": "D:\\Pekerjaan\\OJT\\ATMBank_\\ATMBank_\\wwwroot\\images\\side-update-nasabah.png",
+      "PackagePath": "staticwebassets\\images\\side-update-nasabah.png"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ATMBank_.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

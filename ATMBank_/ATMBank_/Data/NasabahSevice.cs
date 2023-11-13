@@ -24,9 +24,15 @@ namespace ATMBank_.Data
             return true;
         }
 
-        public async Task<Nasabah> GetNasabahByNoRek(int noRekening)
+		public async Task<Nasabah> GetNasabahByNoRek(int NoRek)
+		{
+			Nasabah? nasabah = await _applicationDbContext.Nasabahs.FirstOrDefaultAsync(x => x.NoRekening == NoRek);
+			return nasabah!;
+		}
+
+		public async Task<Nasabah> GetNasabahByUserId(int UserId)
         {
-            Nasabah? nasabah = await _applicationDbContext.Nasabahs.FirstOrDefaultAsync(x => x.NoRekening == noRekening);
+            Nasabah? nasabah = await _applicationDbContext.Nasabahs.FirstOrDefaultAsync(x => x.UserId == UserId);
             return nasabah!;
         }
         
