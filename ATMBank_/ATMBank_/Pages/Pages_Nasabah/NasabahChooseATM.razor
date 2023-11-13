@@ -1,42 +1,35 @@
-﻿@page "/admin/{UserId:int}/chooseATM"
+﻿@page "/nasabah/{UserId:int}/chooseATM"
 @using ATMBank_.Models;
 @using ATMBank_.Context;
 @using ATMBank_.Data;
+@using ATMBank_.Pages.Pages_Utils
 @inject ATMService atmService
-@inject AdminService adminService
+@inject NasabahService nasabahService
 @inject UserService userService
 
 <PageTitle>ATM Bank</PageTitle>
 
-<div class="bg-admin">
+<div class="bg-nasabah">
     <div class="container pt-3">
 
-        <Navbar roleId="user.Role" userId="UserId"></Navbar>
-        
         @if (ATMList is null)
         {
             <p><em>Loading...</em></p>
         }
         else
         {
-
-            <div class="row px-3">
-                <div class="col-lg-12 text-white">
-                    <h3 class="mt-5 fw-bold" style="color: #585858">Halo, @admin.NamaAdmin...<a style="color:#377B8A" href="/admin/@user.Id/updateAdmin"><i class="oi oi-pencil"></i></a></h3>
-                </div>
-            </div>
-
+            <Navbar roleId="user.Role" userId="UserId"></Navbar>
             <div class="row">
-                <div class="col-lg-12 text-white text-center mt-1">
-                    <h3 class="mt-5 fw-bold" style="color: #585858">Pilih ATM</h3>
+                <div class="col-lg-12 text-white text-center mt-5">
+                    <h3 class="mt-5 fw-bold">Pilih ATM</h3>
                 </div>
             </div>
 
             <div class="row mt-5 text-center d-flex justify-content-center">
                 @foreach (var atm in ATMList)
                 {
-                    <div class="col-lg-3 mt-2">
-                        <a href="/admin/@UserId/@atm.Id/detailMonitoring" style="text-decoration: none;">
+                    <div class="col-lg-4 mt-2">
+                        <a href="/nasabah/@UserId/@atm.Id" style="text-decoration: none;">
                             <div class="card text-center mx-auto shadow" style="width: 18rem;">
                                 <div class="card-body">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16" style="color:#288D63">
@@ -48,29 +41,26 @@
                         </a>
                     </div>
                 }
-                <div class="mt-3">
-                    <a href="/admin/@UserId/addATM" class="btn btn-custom-1 mt-5">Tambahkan ATM</a>
-                </div>
             </div>
         }
     </div>
-    <Footer roleId="@user.Role"></Footer>
+    <Footer roleId="user.Role"></Footer>
 </div>
 
 @code {
     [Parameter]
     public int UserId { get; set; }
 
-    List<ATM>? ATMList;
-
     User user = new User();
 
-    Admin admin = new Admin();
+    List<ATM>? ATMList;
+
+    Nasabah nasabah = new Nasabah();
 
     protected override async Task OnInitializedAsync()
     {
         ATMList = await Task.Run(() => atmService.GetAllATM());
-        admin = await Task.Run(() => adminService.GetAdminByUserId(UserId));
+        nasabah = await Task.Run(() => nasabahService.GetNasabahByUserId(UserId));
         user = await Task.Run(() => userService.GetUserById(UserId));
     }
 }
